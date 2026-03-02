@@ -1,5 +1,6 @@
 package checkstyle;
 
+#if (neko || cpp)
 class CheckerPool {
 	var parserQueue:ParserQueue;
 	var templateChecker:Checker;
@@ -27,3 +28,4 @@ class CheckerPool {
 		return true;
 	}
 }
+#end

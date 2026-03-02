@@ -1,5 +1,6 @@
 package checkstyle;
 
+#if (neko || cpp)
 import checkstyle.checks.Check;
 import checkstyle.config.ExcludeManager;
 import checkstyle.reporter.ReporterManager;
@@ -108,3 +109,4 @@ class CheckerThread {
 		return finished;
 	}
 }
+#end

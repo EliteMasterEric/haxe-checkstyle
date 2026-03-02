@@ -1,5 +1,6 @@
 package checkstyle;
 
+#if (neko || cpp)
 import checkstyle.utils.Mutex;
 import checkstyle.utils.Thread;
 
@@ -66,3 +67,4 @@ class ParserQueue {
 		return checkFile;
 	}
 }
+#end
