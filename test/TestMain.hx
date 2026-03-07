@@ -32,7 +32,10 @@ class TestMain {
 		runner.addCase(new CheckerTest());
 		runner.addCase(new ConfigParserTest());
 		runner.addCase(new DetectCodingStyleTest());
+
+		#if (neko || cpp)
 		runner.addCase(new ThreadTest());
+		#end
 
 		runner.run();
 	}

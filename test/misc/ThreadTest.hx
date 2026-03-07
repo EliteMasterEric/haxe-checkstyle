@@ -1,5 +1,6 @@
 package misc;
 
+#if (neko || cpp)
 import byte.ByteData;
 import checkstyle.CheckFile;
 import checkstyle.Checker;
@@ -106,3 +107,4 @@ class ThreadTest implements ITest {
 		reporter = null;
 	}
 }
+#end
