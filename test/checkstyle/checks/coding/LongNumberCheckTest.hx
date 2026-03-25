@@ -17,8 +17,7 @@ class LongNumberCheckTest extends CheckTestCase<LongNumberCheckTests> {
 
 		assertNoMsg(check, TEST_HEXADECIMAL);
 		assertMessages(check, TEST_HEXADECIMAL_LONG, [
-			"\"0x1234_5678\" uses separators improperly, use _ every 8 digits",
-			"\"0x10233023AF\" is a long hexadecimal number, use _ as a separator"
+			"\"0x1234_5678\" uses separators improperly, use _ every 8 digits"
 		]);
 		assertNoMsg(check, TEST_HEXADECIMAL_FIXED);
 
@@ -51,8 +50,7 @@ class LongNumberCheckTest extends CheckTestCase<LongNumberCheckTests> {
 		
 		assertNoMsg(check, TEST_HEXADECIMAL);
 		assertMessages(check, TEST_HEXADECIMAL_LONG, [
-			"\"0x1234_5678\" uses separators improperly, use _ every 8 digits",
-			"\"0x10233023AF\" is a long hexadecimal number, use _ as a separator"
+			"\"0x1234_5678\" uses separators improperly, use _ every 8 digits"
 		]);
 		assertNoMsg(check, TEST_HEXADECIMAL_FIXED);
 
@@ -83,8 +81,7 @@ class LongNumberCheckTest extends CheckTestCase<LongNumberCheckTests> {
 
 		assertNoMsg(check, TEST_HEXADECIMAL);
 		assertMessages(check, TEST_HEXADECIMAL_LONG, [
-			"\"0x1234_5678\" uses separators improperly, use _ every 8 digits",
-			"\"0x10233023AF\" is a long hexadecimal number, use _ as a separator"
+			"\"0x1234_5678\" uses separators improperly, use _ every 8 digits"
 		]);
 		assertNoMsg(check, TEST_HEXADECIMAL_FIXED);
 
@@ -131,6 +128,26 @@ class LongNumberCheckTest extends CheckTestCase<LongNumberCheckTests> {
 		]);
 		assertMessages(check, TEST_BINARY_FIXED, [
 			"\"0b10_01000101\" uses separators improperly, use _ every 4 digits"
+		]);
+	}
+
+	@Test
+	public function testMinimum() {
+		var check = new LongNumberCheck();
+		check.decimalGroupSize = 3;
+		check.hexadecimalGroupSize = 4;
+		check.binaryGroupSize = 4;
+		check.decimalMinimum = 1_000_000;
+		check.hexadecimalMinimum = 0x100_0000;
+
+		assertNoMsg(check, TEST_DECIMAL);
+		assertNoMsg(check, TEST_DECIMAL_LONG);
+		assertNoMsg(check, TEST_DECIMAL_FIXED);
+		assertMessages(check, TEST_HEXADECIMAL, [
+			// Not long enough
+			// "\"0x123456\" is a long hexadecimal number, use _ as a separator",
+			// Long enough
+			"\"0x10233023\" is a long hexadecimal number, use _ as a separator"
 		]);
 	}
 }
@@ -185,14 +202,14 @@ enum abstract LongNumberCheckTests(String) to String {
 	abstractAndClass Test {
 		public function new() {
 			var c = 0x1234_5678;
-			var c = 0x10233023AF;
+			var c = 0x10233023;
 		}
 	}";
 	var TEST_HEXADECIMAL_FIXED = "
 	abstractAndClass Test {
 		public function new() {
 			var c = 0x12345678;
-			var c = 0x10_233023AF;
+			var c = 0x10233023;
 		}
 	}";
 
