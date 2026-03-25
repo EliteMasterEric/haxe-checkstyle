@@ -18,6 +18,7 @@ debug/
 
 check-style-report.json
 check-style-report.xml
+codecov.json
 coverage.json
 haxecheckstyle.js
 

@@ -5313,24 +5313,34 @@
             "properties": {
                 "props": {
                     "properties": {
+                        "decimalMinimum": {
+                            "description": "for decimal numbers, the minimum quantity before it's a long number\n\t\tfor example, if set to `1000000`, `999999` requires no separators but `1_000_000` does\n\t\tdefaults to `0` to disable the check",
+                            "propertyOrder": 1,
+                            "type": "integer"
+                        },
                         "decimalGroupSize": {
                             "description": "for decimal numbers, the number of consecutive digits before it's a long number\n\t\tdefaults to `3`, where `1000` is a long number but `1_000` is valid\n\t\tuse `-1` to disable the check entirely",
                             "propertyOrder": 0,
                             "type": "integer"
                         },
+                        "hexadecimalMinimum": {
+                            "description": "for hexadecimal numbers, the minimum quantity before it's a long number\n\t\tfor example, if set to `0x1000000000`, `0x123456789` requires no separators but `0x12_34567890` does\n\t\tdefaults to `0` to disable the check",
+                            "propertyOrder": 4,
+                            "type": "integer"
+                        },
                         "fractionalGroupSize": {
                             "description": "for floating point decimal numbers, the number of consecutive digits after the decimal pointbefore it's a long number\n\t\tfor example, where `1000` is a long number but `1_000` is valid\n\t\tdefaults to `-1` to disable the check\n\t\tuse `-1` to disable the check entirely",
-                            "propertyOrder": 1,
+                            "propertyOrder": 2,
                             "type": "integer"
                         },
                         "binaryGroupSize": {
                             "description": "for binary numbers, the number of consecutive digits before it's a long number\n\t\tdefaults to `8`, where `0b101010101` is a long number but `0b1_01010101` is valid\n\t\tuse `-1` to disable the check entirely",
-                            "propertyOrder": 3,
+                            "propertyOrder": 5,
                             "type": "integer"
                         },
                         "severity": {
                             "description": "sets gravity of reported violations:\n\t- IGNORE = do not report violations, violations do not appear anywhere in output\n\t- INFO = all violations have info / lowest priority\n\t- WARNING = all violations have warning / medium priority\n\t- ERROR = all violations have error / highest priority",
-                            "propertyOrder": 4,
+                            "propertyOrder": 6,
                             "enum": [
                                 "INFO",
                                 "WARNING",
@@ -5341,7 +5351,7 @@
                         },
                         "hexadecimalGroupSize": {
                             "description": "for hexadecimal numbers, the number of consecutive digits before it's a long number\n\t\tdefaults to `8`, where `0x123456789` is a long number but `0x1_2345678` is valid\n\t\tuse `-1` to disable the check entirely",
-                            "propertyOrder": 2,
+                            "propertyOrder": 3,
                             "type": "integer"
                         }
                     },
